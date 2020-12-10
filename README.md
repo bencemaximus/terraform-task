@@ -14,9 +14,10 @@ A VPC with internet access
 Idea to configure the VPC endpoint:
 
 resource "aws_vpc_endpoint" "private-s3" {
-    vpc_id = "${vpc.terraform-vpc.id}"
+    vpc_id = module.vpc.vpc_id
     service_name = "com.amazonaws.eu-west-1.s3"
-    route_table_ids = ["${aws_route_table.default.id}"]
+    #route_table_ids = ["${aws_route_table.default.id}"]
+    route_table_ids = module.vpc.route_table.default.id
     policy = <<POLICY
 {
     "Statement": [
