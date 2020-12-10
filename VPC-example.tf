@@ -1,6 +1,9 @@
 provider "aws" {
+  access_key = "AKIAUICHBCSUFW7BNKB7"
+  secret_key = "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"
   region = "eu-west-1"
 }
+
 
 module "s3_bucket" {
   source = "github.com/terraform-aws-modules/terraform-aws-s3-bucket"
@@ -59,4 +62,3 @@ module "vpc" {
   }
 
 }
-
