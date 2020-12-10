@@ -1,6 +1,4 @@
 provider "aws" {
-  access_key = "AKIAUICHBCSUFW7BNKB7"
-  secret_key = "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"
   region = "eu-west-1"
 }
 
@@ -62,20 +60,3 @@ module "vpc" {
 
 }
 
-resource "aws_vpc_endpoint" "private-s3" {
-    vpc_id = "${vpc.terraform-vpc.id}"
-    service_name = "com.amazonaws.eu-west-1.s3"
-    route_table_ids = ["${aws_route_table.default.id}"]
-    policy = <<POLICY
-{
-    "Statement": [
-        {
-            "Action": "*",
-            "Effect": "Allow",
-            "Resource": "*",
-            "Principal": "*"
-        }
-    ]
-}
-POLICY
-}
